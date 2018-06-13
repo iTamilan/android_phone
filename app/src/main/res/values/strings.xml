@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">தமிழ்</string>
+    <string name="title_contacts">Contacts</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_keypad">Contacts</string>
+    <string name="title_more">More</string>
+    <string name="title_recents">Recents</string>
+</resources>

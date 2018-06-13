@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">தமிழ்</string>
+    <string name="title_contacts">தொடர்பு</string>
+    <string name="title_favourites">பிடித்தவை</string>
+    <string name="title_keypad">பலகை</string>
+    <string name="title_more">மேலும்</string>
+    <string name="title_recents">அன்மையில்</string>
+</resources>
