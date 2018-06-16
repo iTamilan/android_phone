@@ -7,17 +7,18 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.itamilan.phone.R
 import com.itamilan.phone.adapter.ContactsRecyclerViewAdapter
+import com.itamilan.phone.model.Contact
+import com.itamilan.phone.model.ContactFetcher
 import kotlinx.android.synthetic.main.view_list.view.*
 
 class ContactsView(context: Context) : LinearLayout(context) {
 
     private val layoutInflator: LayoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    private var names: ArrayList<String> = ArrayList()
+    private var contacts = ArrayList<Contact>()
     private var contactsAdapter: ContactsRecyclerViewAdapter? = null
 
     init {
-        loadNames()
         setUpView()
     }
 
@@ -25,15 +26,14 @@ class ContactsView(context: Context) : LinearLayout(context) {
         val contactsView = layoutInflator.inflate(R.layout.view_list, this)
         val recyclerView = contactsView.list
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
-        contactsAdapter = ContactsRecyclerViewAdapter(context, names)
+        contactsAdapter = ContactsRecyclerViewAdapter(context)
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = contactsAdapter
     }
 
-    private fun loadNames() {
-        names.add("Tamil")
-        names.add("Sarath")
-        names.add("Kapil")
+    fun refreshContacts() {
+        contacts = ContactFetcher(context).fetchAll()
+        contactsAdapter?.updateData(contacts)
     }
 }

@@ -45,6 +45,7 @@ class TabActivity : AppCompatActivity() {
 
         contactsView = ContactsView(this)
         container.addView(contactsView)
+        contactsView?.refreshContacts()
 
         navigation.selectedItemId = R.id.navigation_recents
         setUpTootBarTitle(R.string.title_recents)

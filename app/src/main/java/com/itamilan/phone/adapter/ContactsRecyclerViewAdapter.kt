@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.itamilan.phone.R
+import com.itamilan.phone.model.Contact
 
-class ContactsRecyclerViewAdapter(context: Context, names: ArrayList<String>): RecyclerView.Adapter<ContactsRecyclerViewAdapter.ContactsViewHolder>() {
+class ContactsRecyclerViewAdapter(context: Context): RecyclerView.Adapter<ContactsRecyclerViewAdapter.ContactsViewHolder>() {
 
     private var layoutInflater: LayoutInflater = context
             .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    private var names: ArrayList<String> = ArrayList()
+    private var contacts =  ArrayList<Contact>()
 
     init {
-        this.names = names
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
@@ -24,15 +25,17 @@ class ContactsRecyclerViewAdapter(context: Context, names: ArrayList<String>): R
     }
 
     override fun getItemCount(): Int {
-        return names.size
+        return contacts.size
     }
 
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
-        holder.textView.text = names.get(position)
+        val name  = contacts[position].name
+        println("contact name: $name")
+        holder.textView.text = contacts[position].name
     }
 
-    public fun updateData(names: ArrayList<String>) {
-        this.names = names
+    public fun updateData(contacts: ArrayList<Contact>) {
+        this.contacts = contacts
         this.notifyDataSetChanged()
     }
 
