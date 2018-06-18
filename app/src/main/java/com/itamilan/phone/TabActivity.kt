@@ -17,7 +17,7 @@ class TabActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_favourites -> {
                 setUpTootBarTitle(R.string.title_favourites)
-                contactsView?.visibility = View.VISIBLE
+                contactsView?.visibility = View.INVISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_recents -> {
@@ -26,7 +26,7 @@ class TabActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_contacts -> {
-                contactsView?.visibility = View.INVISIBLE
+                contactsView?.visibility = View.VISIBLE
                 setUpTootBarTitle(R.string.title_contacts)
                 return@OnNavigationItemSelectedListener true
             }
@@ -47,7 +47,7 @@ class TabActivity : AppCompatActivity() {
         container.addView(contactsView)
         contactsView?.refreshContacts()
 
-        navigation.selectedItemId = R.id.navigation_recents
+        navigation.selectedItemId = R.id.navigation_contacts
         setUpTootBarTitle(R.string.title_recents)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)

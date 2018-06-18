@@ -25,13 +25,32 @@ class ContactsRecyclerViewAdapter(context: Context): RecyclerView.Adapter<Contac
     }
 
     override fun getItemCount(): Int {
+        println("Contacts size: ${contacts.size}")
         return contacts.size
     }
 
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
-        val name  = contacts[position].name
-        println("contact name: $name")
-        holder.textView.text = contacts[position].name
+
+        if (contacts.size > position) {
+            val name  = contacts[position].name
+            println("contact name: $name at position: $position")
+
+            val phoneNumbers = contacts[position].numbers
+            if (phoneNumbers.size > 0) {
+                val phonenumber = phoneNumbers.first()
+                holder.phoneTextView.text = phonenumber
+                print("Phone number: $phonenumber at position: $position")
+            } else {
+                holder.phoneTextView.text = ""
+            }
+
+            holder.nameTextView.text = name
+
+        } else {
+            holder.nameTextView.text = ""
+            holder.phoneTextView.text = ""
+            println("Contacts size: ${contacts.size} at position: $position")
+        }
     }
 
     public fun updateData(contacts: ArrayList<Contact>) {
@@ -40,10 +59,11 @@ class ContactsRecyclerViewAdapter(context: Context): RecyclerView.Adapter<Contac
     }
 
     class ContactsViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView
-
+        val nameTextView: TextView
+        val phoneTextView: TextView
         init {
-            textView = itemView!!.findViewById(R.id.textView)
+            nameTextView = itemView!!.findViewById(R.id.nameTextView)
+            phoneTextView = itemView!!.findViewById(R.id.phoneTextView)
         }
     }
 }

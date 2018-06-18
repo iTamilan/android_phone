@@ -9,6 +9,7 @@ import com.itamilan.phone.R
 import com.itamilan.phone.adapter.ContactsRecyclerViewAdapter
 import com.itamilan.phone.model.Contact
 import com.itamilan.phone.model.ContactFetcher
+import com.itamilan.phone.model.ContactFilter
 import kotlinx.android.synthetic.main.view_list.view.*
 
 class ContactsView(context: Context) : LinearLayout(context) {
@@ -34,6 +35,9 @@ class ContactsView(context: Context) : LinearLayout(context) {
 
     fun refreshContacts() {
         contacts = ContactFetcher(context).fetchAll()
-        contactsAdapter?.updateData(contacts)
+
+        val filetersContacts: ArrayList<Contact> = ContactFilter(contacts).fileterContacts("ohit")
+
+        contactsAdapter?.updateData(filetersContacts)
     }
 }
