@@ -7,12 +7,24 @@
     android:orientation="vertical"
     tools:context=".TabActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical" />
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="2dp"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
+        android:hint="@string/type_here_to_search"
+        android:text=""
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="20sp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

@@ -33,10 +33,10 @@ class ContactsView(context: Context) : LinearLayout(context) {
         recyclerView.adapter = contactsAdapter
     }
 
-    fun refreshContacts() {
+    fun refreshContacts(searchText: String) {
         contacts = ContactFetcher(context).fetchAll()
 
-        val filetersContacts: ArrayList<Contact> = ContactFilter(contacts).fileterContacts("ohit")
+        val filetersContacts: ArrayList<Contact> = ContactFilter(contacts).fileterContacts(searchText.trim())
 
         contactsAdapter?.updateData(filetersContacts)
     }

@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">தமிழ்</string>
+    <string name="coming_soon">coming soon...</string>
     <string name="title_contacts">Contacts</string>
     <string name="title_favourites">Favourites</string>
-    <string name="title_keypad">Contacts</string>
+    <string name="title_keypad">Keypad</string>
     <string name="title_more">More</string>
     <string name="title_recents">Recents</string>
+    <string name="type_here_to_search">Type here to search</string>
 </resources>
